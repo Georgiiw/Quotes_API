@@ -52,14 +52,12 @@ namespace QuotesAPI.Controllers
             {
                 return BadRequest();
             }
-
-            Quote model = new ()
-            {
-                Author = quoteDTO.Author,
-                Description = quoteDTO.Description
-            };
-            await _quoteRepository.Update(model);
-            return Ok($"{model.Author}: {model.Description} - Updated");
+            Quote quoteToUpdate = await _quoteRepository.GetAsync(q => q.Id == quoteDTO.Id);
+            quoteToUpdate.Author = quoteDTO.Author;
+            quoteToUpdate.Description = quoteDTO.Description;
+           
+            await _quoteRepository.Update(quoteToUpdate);
+            return Ok($"{quoteToUpdate.Author}: {quoteToUpdate.Description} - Updated");
         }      
     }
 }

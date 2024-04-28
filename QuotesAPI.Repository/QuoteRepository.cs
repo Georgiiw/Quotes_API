@@ -19,6 +19,7 @@ namespace QuotesAPI.Repository
         public async Task Update(Quote quote)
         {
             _dbContext.Quotes.Update(quote);
+            await SaveAsync();
         }
     }
 }
