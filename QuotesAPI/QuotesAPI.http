@@ -1,6 +1,11 @@
-@QuotesAPI_HostAddress = http://localhost:5048
+@QuotesAPI_HostAddress = https://localhost:7298
 
-GET {{QuotesAPI_HostAddress}}/quotes/
+GET {{QuotesAPI_HostAddress}}/api/quotes/
 Accept: application/json
 
 ###
+
+POST {{QuotesAPI_HostAddress}}/api/quotes
+
+###
+

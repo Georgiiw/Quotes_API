@@ -1,5 +1,7 @@
 using QuotesAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using QuotesAPI.Repository.IRepository;
+using QuotesAPI.Repository;
 namespace QuotesAPI
 {
     public class Program
@@ -13,6 +15,7 @@ namespace QuotesAPI
             {           
                 options.UseSqlServer(connectionString);
             });
+            builder.Services.AddScoped<IQuoteRepository, QuoteRepository>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
